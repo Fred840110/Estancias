@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+<!--Estilos-->
+{% block styles%} 
+<link rel="stylesheet" href="static\css\stylesheet_2.css">
+{% endblock %}
+
+<!--Titulos-->
+
+{% block titulo %} 
+    Registro-usuario
+{% endblock %}
+
+<!--Bloques de contenido-->
+
+{% block content %}
+<main class="principal">
+    <div class="registro">
+        
+        <h2 class="registro encabezado">REGISTRO "NUEVO USUARIO"</h2>
+
+        <div class="registro personales">
+
+            <form action="" method="post">
+                <label class="registro etiqueta" for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre" required><br>
+                
+                <label class="registro etiqueta" for="ap_p">Apellido paterno:</label>
+                <input type="text" name="ap_p" id="ap_p" required><br>
+                
+                <label class="registro etiqueta" for="ap_materno">Apellido materno:</label>
+                <input type="text" name="ap_materno" id="ap_materno" required><br>
+                
+                <label class="registro etiqueta" for="ap_m">Apellido materno:</label>
+                <input type="text" name="ap_m" id="ap_m" required><br>
+
+                
+            
+            </form>
+        </div>
+
+    </div>
+    
+</main>
+        
+    </form>
+{% endblock%}
+
