@@ -1,6 +1,0 @@
-main{
-    width: 100%; /* Ancho del elemento */
-    height: 300px; /* Altura del elemento */
-    background-image: linear-gradient(to bottom,#0b1a5d, #dbd5e1);
-    block-size: 100%;
-}
