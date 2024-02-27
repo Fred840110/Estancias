@@ -4,9 +4,6 @@ from flask_mail import Mail, Message
 import random
 import bcrypt
 
-
-
-
 app = Flask(__name__)
 app.secret_key = 'secretKey'
 
@@ -45,14 +42,17 @@ mail = Mail(app)
 def index():
     
     return render_template ('index.html')
+@app.route('/registro.html')
+def resgistro():
+    return render_template('registro.html')
 
-@app.route('/registro.html',methods=['GET','POST'])
+@app.route('/enviar_correo',methods=['GET','POST'])
 def registro():
     
     if request.method == 'POST':
         dicc = {}
         nombre = request.form['nombre']
-        ap_paterno =request.form['apellido_paterno']
+        ap_paterno = request.form['apellido_paterno']
         ap_materno = request.form['apellido_materno']
         email = request.form['correo']
         tel = request.form['telefono']
@@ -63,21 +63,19 @@ def registro():
         contrasena = request.form['contrasena']
         conf_contrasena = request.form['conf_password']
 
-        # -> VERIFICAMOS SI LAS CONTRASEÑAS COINCIDEN
+    # -> VERIFICAMOS SI LAS CONTRASEÑAS COINCIDEN
 
-        if contrasena != conf_contrasena:
-            flash('Las contraseñas no coinciden, Por favor , intentalo de nuevo', 'warning')
-            return redirect(url_for('registro'))
-        
+    if contrasena != conf_contrasena:
+        flash('Las contraseñas no coinciden, Por favor, inténtalo de nuevo', 'warning')
+        return redirect(url_for('registro,email,telefono'))
+
     #encriptamos contraseñas
-    hashed_password = bcrypt.hashpw(contrasena.encode('utf-8'),bcrypt.gensalt)
-    
+    hashed_password = bcrypt.hashpw(contrasena.encode('utf-8'), bcrypt.gensalt())
+
     cur = mysql.connection.cursor()
-    cur.execute('INSERT INTO ')        
-        
 
 
-    return render_template('registro.html')
+    return 'hola'
 
 '''@app.route('/enviar_correo',methods=['GET','POST'])
 def enviar_correo ():
