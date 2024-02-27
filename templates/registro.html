@@ -2,8 +2,8 @@
 <!--Estilos-->
 {% block styles%}
 
-    <link rel="stylesheet" href="static/css/stylesheetDos.css">
-   
+<link rel="stylesheet" href="static/css/stylesheetDos.css">
+
 
 {% endblock %}
 
@@ -17,8 +17,66 @@ Registro-usuario
 <!--Bloques de contenido-->
 
 {% block content %}
-    <div class="registro">
-        <h1>Registro de usuario</h1>
-    </div>
-
+<div class="container">
+    <h2>Registro de Nuevo Usuario</h2>
+    <form action="enviar_correo" method="POST">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="apellido_paterno">Apellido Paterno:</label>
+            <input type="text" id="apellido_paterno" name="apellido_paterno" required>
+        </div>
+        <div class="form-group">
+            <label for="apellido_materno">Apellido Materno:</label>
+            <input type="text" id="apellido_materno" name="apellido_materno" required>
+        </div>
+        <div class="form-group">
+            <label for="correo">Correo Electrónico:</label>
+            <input type="email" id="correo" name="correo" required>
+        </div>
+        <div class="form-group">
+            <label for="telefono">Telefono</label>
+            <input type="tel" id="telefono" name="telefono" required>
+        </div>
+        <div class="form-group">
+            <label for="direccion">Direccion</label>
+            <input type="text" name="direccion" id="direccion" required>
+        </div>
+        <div class="form-group">
+            <label for="fecha_nacimiento_mes">Fecha de Nacimiento:</label>
+            <select id="fecha_nacimiento_mes" name="fecha_nacimiento_mes" required>
+                <option value="">Seleccione un Mes</option>
+                <option value="enero">Enero</option>
+                <option value="febrero">Febrero</option>
+                <option value="marzo">Marzo</option>
+                <option value="abril">Abril</option>
+                <option value="mayo">Mayo</option>
+                <option value="junio">Junio</option>
+                <option value="julio">Julio</option>
+                <option value="agosto">Agosto</option>
+                <option value="septiembre">Septiembre</option>
+                <option value="octubre">Octubre</option>
+                <option value="noviembre">Noviembre</option>
+                <option value="diciembre">Diciembre</option>
+            </select>
+            <input type="number" id="fecha_nacimiento_dia" name="fecha_nacimiento_dia" placeholder="Día" min="1"
+                max="31" required>
+            <input type="number" id="fecha_nacimiento_anio" name="fecha_nacimiento_anio" placeholder="Año" min="1900"
+                max="2099" required>
+            <div class="form-group">
+                <label for="contrasena">Contraseña</label>
+                <input type="password" id="contrasena" name="contrasena" required>
+            </div>
+            <div class="form-group">
+                <label for="conf_password">Confirmar contraseña</label>
+                <input type="password" id="conf_password" name="conf_password" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit">Registrarse</button>
+        </div>
+    </form>
+</div>
 {% endblock%}
