@@ -50,10 +50,11 @@ def resgistro():
 def registro():
     
     if request.method == 'POST':
-        dicc = {}
+        
         nombre = request.form['nombre']
         ap_paterno = request.form['apellido_paterno']
         ap_materno = request.form['apellido_materno']
+        ocupacion = request.form['ocupacion']
         email = request.form['correo']
         tel = request.form['telefono']
         direccion = request.form['direccion']
@@ -63,19 +64,43 @@ def registro():
         contrasena = request.form['contrasena']
         conf_contrasena = request.form['conf_password']
 
+        dicc = {'nombre':nombre,
+                'apellidoPaterno':ap_paterno,
+                'appeliidoMaterno':ap_materno,
+                'ocupacion':ocupacion,
+                'email':email,
+                'telefono':tel,
+                'direccion': direccion,
+                'mes':mes,
+                'diaNaciemiento': dia_nac,
+                'anio': anio
+                }
+        
+
     # -> VERIFICAMOS SI LAS CONTRASEÑAS COINCIDEN
 
     if contrasena != conf_contrasena:
         flash('Las contraseñas no coinciden, Por favor, inténtalo de nuevo', 'warning')
-        return redirect(url_for('registro,email,telefono'))
+        return redirect(url_for('registro'))
 
-    #encriptamos contraseñas
-    hashed_password = bcrypt.hashpw(contrasena.encode('utf-8'), bcrypt.gensalt())
+    # ->encriptamos la contraseña antes de almacenarla en base de datos
 
+    password_encriptado = bcrypt.hashpw(contrasena.encode('utf-8'),bcrypt.gensalt())
     cur = mysql.connection.cursor()
+    cur.execute("INSERT INTO usuario(nombre, email, telefono, direccion, ap_paterno, ap_materno, contrasena, ocupacion, dia_cumple, mes_cumple, ano_nac) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                (nombre, email, tel, direccion, ap_paterno, ap_materno, contrasena, ocupacion, dia_nac, mes, anio))
+    mysql.connection.commit()
+    cur.close()
+
+    # ->Generamos un numero de confirmacion para los datos para enviar por correo
+
+    numeroDeConfirmacion = ''.join(random.choices('0123456789', k=6))
 
 
-    return 'hola'
+    #-> Almacenamos el numero de session en la 
+
+
+
 
 '''@app.route('/enviar_correo',methods=['GET','POST'])
 def enviar_correo ():

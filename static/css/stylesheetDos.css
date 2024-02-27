@@ -23,16 +23,19 @@ h2 {
 
 .form-group {
     margin-bottom: 15px;
+    
 }
 
 label {
     display: block;
     font-weight: bold;
+    font-size: 20px;
 }
-  
 input[type="text"],
 input[type="number"],
 input[type="email"],
+input[type="password"],
+
 select {
     width: 100%;
     padding: 8px;
@@ -68,3 +71,4 @@ button:hover {
     max-width: 90%;
     }
 }
+
