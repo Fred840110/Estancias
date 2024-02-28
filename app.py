@@ -7,50 +7,51 @@ import bcrypt
 app = Flask(__name__)
 app.secret_key = 'secretKey'
 
-# -> Configuración de la base de datos
+# Configuración de la base de datos
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = '123456'
-app.config['MYSQL_DB']= 'estancia_upq'
+app.config['MYSQL_DB'] = 'estancia_upq'
 
 mysql = MySQL(app)
-#definimos una funcion para el manejo de tupla a diccionario
-#----------------------------------------------------------------------------------------------------
-def dict_factory(cursor,row):
-    d ={}
+
+# Configuración del correo para el envío de la confirmación
+app.config['MAIL_SERVER'] = 'smtp.mail.yahoo.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'encuesta.2024@yahoo.com'
+app.config['MAIL_PASSWORD'] = 'candita840110'
+
+mail = Mail(app)
+
+
+# Función para convertir resultados de consulta a diccionarios
+def dict_factory(cursor, row):
+    d = {}
     for idx, col in enumerate(cursor.description):
         d[col[0]] = row[idx]
-        return d
-#----------------------------------------------------------------------------------------------------
+    return d
+
+
+# Configurar el row factory antes de cada petición
 @app.before_request
 def configure_row_factory():
     mysql.connection.cursor().row_factory = dict_factory
 
-#---------------------------------------------------------------------------------------------------- 
-
-# -> configuracion del correo para el envio de la confirmacion
-
-app.config['MAIL_SERVER']= 'smtp.gmail.com'
-app.config['MAIL_PORT']= '587'
-app.config['MAIL_USE_TLS']='True'
-app.config['MAIL_USERNAME']= '4dm1n1str4d0r.upq.encuesta.2024@gmail.com'
-app.config['MAIL_SERVER']= 'encuesta_2024_estadia'
-
-mail = Mail(app)
 
 @app.route('/')
 def index():
-    
-    return render_template ('index.html')
+    return render_template('index.html')
+
+
 @app.route('/registro.html')
-def resgistro():
+def registro():
     return render_template('registro.html')
 
-@app.route('/enviar_correo',methods=['GET','POST'])
-def registro():
-    
+
+@app.route('/enviar_correo', methods=['POST'])
+def enviar_correo():
     if request.method == 'POST':
-        
         nombre = request.form['nombre']
         ap_paterno = request.form['apellido_paterno']
         ap_materno = request.form['apellido_materno']
@@ -64,63 +65,48 @@ def registro():
         contrasena = request.form['contrasena']
         conf_contrasena = request.form['conf_password']
 
-        dicc = {'nombre':nombre,
-                'apellidoPaterno':ap_paterno,
-                'appeliidoMaterno':ap_materno,
-                'ocupacion':ocupacion,
-                'email':email,
-                'telefono':tel,
-                'direccion': direccion,
-                'mes':mes,
-                'diaNaciemiento': dia_nac,
-                'anio': anio
-                }
-        
+        # Verificar si las contraseñas coinciden
+        if contrasena != conf_contrasena:
+            flash('Las contraseñas no coinciden, Por favor, inténtalo de nuevo', 'warning')
+            return redirect(url_for('registro'))
 
-    # -> VERIFICAMOS SI LAS CONTRASEÑAS COINCIDEN
+        # Encriptar la contraseña antes de almacenarla en la base de datos
+        password_encriptado = bcrypt.hashpw(contrasena.encode('utf-8'), bcrypt.gensalt())
+        cur = mysql.connection.cursor()
+        cur.execute("INSERT INTO usuario(nombre, email, telefono, direccion, ap_paterno, ap_materno, contrasena, ocupacion, dia_cumple, mes_cumple, ano_nac) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                    (nombre, email, tel, direccion, ap_paterno, ap_materno, password_encriptado, ocupacion, dia_nac, mes, anio))
+        mysql.connection.commit()
+        cur.close()
 
-    if contrasena != conf_contrasena:
-        flash('Las contraseñas no coinciden, Por favor, inténtalo de nuevo', 'warning')
-        return redirect(url_for('registro'))
+        # Generar un número de confirmación para los datos para enviar por correo
+        numero_de_confirmacion = ''.join(random.choices('0123456789', k=6))
 
-    # ->encriptamos la contraseña antes de almacenarla en base de datos
+        # Almacenar el número de confirmación en la sesión
+        session['numero_de_confirmacion'] = numero_de_confirmacion
 
-    password_encriptado = bcrypt.hashpw(contrasena.encode('utf-8'),bcrypt.gensalt())
-    cur = mysql.connection.cursor()
-    cur.execute("INSERT INTO usuario(nombre, email, telefono, direccion, ap_paterno, ap_materno, contrasena, ocupacion, dia_cumple, mes_cumple, ano_nac) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
-                (nombre, email, tel, direccion, ap_paterno, ap_materno, contrasena, ocupacion, dia_nac, mes, anio))
-    mysql.connection.commit()
-    cur.close()
+        # Construir el mensaje de correo electrónico
+        msj = Message('CONFIRMACION DE REGISTRO', sender='encuesta.2024@yahoo.com', recipients=[email])
+        msj.body = f'Hola, por favor haz click en el siguiente para confirmar tu registro: {url_for("confirmar_registro", numero_confirmacion=numero_de_confirmacion, _external=True)}'
+        mail.send(msj)
 
-    # ->Generamos un numero de confirmacion para los datos para enviar por correo
-
-    numeroDeConfirmacion = ''.join(random.choices('0123456789', k=6))
+        flash('Se ha enviado un correo de confirmación. Por favor, revisa tu bandeja de entrada.', 'success')
+        return redirect(url_for('index'))
 
 
-    #-> Almacenamos el numero de session en la session:
-
-    session['numeroDeConfirmacion'] = numeroDeConfirmacion
-
-    #construimos el mensaje de correo electronico
-
-    msj = Message('CONFIRMACION DE REGISTRO', sender = '4dm1n1str4d0r.upq.encuesta.2024@gmail.com',recipients=[email])
-    msj.body = f'Hola, pofr favor haz click en el siguiente para confirmar tu registro: {url_for("confirmar_registro", _external = True )}'
-    mail.send(msj)
-
-    flash('Se ha enviado un correo de confirmación. Por favor, revisa tu bandeja de entrada.', 'success')
-    return redirect(url_for('index'))
-
-@app.route('/confirmar_registro', methods = ['GET'])
+@app.route('/confirmar_registro', methods=['GET'])
 def confirmar_registro():
+    numero_confirmacion = session.get('numero_de_confirmacion')
 
-    numero_confirmacion = session.get('numeroDeConfirmacion')
     if numero_confirmacion:
-        numero_confirmacion = request.args.get('numero_confirmacion')
-        
-    
+        numero_confirmacion_confirmacion = request.args.get('numero_confirmacion')
+
+        if numero_confirmacion_confirmacion == numero_confirmacion:
+            flash('¡Registro confirmado con éxito!', 'success')
+            return redirect(url_for('index'))
+
+    flash('Error al confirmar el registro. Por favor intentalo nuevamente', 'error')
+    return redirect(url_for('index'))
 
 
 if __name__ == '__main__':
-
     app.run(debug=True, port=5000)
-
