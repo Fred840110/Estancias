@@ -3,6 +3,14 @@ from flask_mysqldb import MySQL
 from flask_mail import Mail, Message
 import random
 import bcrypt
+import os
+from dotenv import load_dotenv
+import ssl
+import smtplib
+
+password = os.getenv("PASSWORD")
+mysql_password = os.getenv("PASSWORD_MYSQL")
+
 
 app = Flask(__name__)
 app.secret_key = 'secretKey'
@@ -16,11 +24,11 @@ app.config['MYSQL_DB'] = 'estancia_upq'
 mysql = MySQL(app)
 
 # Configuración del correo para el envío de la confirmación
-app.config['MAIL_SERVER'] = 'smtp.mail.yahoo.com'
+app.config['MAIL_SERVER'] = "smtp.gmail.com"
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'encuesta.2024@yahoo.com'
-app.config['MAIL_PASSWORD'] = 'candita840110'
+app.config['MAIL_USERNAME'] = "fred.urbina1984@gmail.com"
+app.config['MAIL_PASSWORD'] = password
 
 mail = Mail(app)
 
@@ -85,8 +93,9 @@ def enviar_correo():
         session['numero_de_confirmacion'] = numero_de_confirmacion
 
         # Construir el mensaje de correo electrónico
-        msj = Message('CONFIRMACION DE REGISTRO', sender='encuesta.2024@yahoo.com', recipients=[email])
+        msj = Message('CONFIRMACION DE REGISTRO', sender='fred.urbina1984@gamil.com', recipients=[email])
         msj.body = f'Hola, por favor haz click en el siguiente para confirmar tu registro: {url_for("confirmar_registro", numero_confirmacion=numero_de_confirmacion, _external=True)}'
+        print(password)
         mail.send(msj)
 
         flash('Se ha enviado un correo de confirmación. Por favor, revisa tu bandeja de entrada.', 'success')
