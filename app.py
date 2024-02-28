@@ -97,21 +97,27 @@ def registro():
     numeroDeConfirmacion = ''.join(random.choices('0123456789', k=6))
 
 
-    #-> Almacenamos el numero de session en la 
+    #-> Almacenamos el numero de session en la session:
 
+    session['numeroDeConfirmacion'] = numeroDeConfirmacion
 
+    #construimos el mensaje de correo electronico
 
+    msj = Message('CONFIRMACION DE REGISTRO', sender = '4dm1n1str4d0r.upq.encuesta.2024@gmail.com',recipients=[email])
+    msj.body = f'Hola, pofr favor haz click en el siguiente para confirmar tu registro: {url_for("confirmar_registro", _external = True )}'
+    mail.send(msj)
 
-'''@app.route('/enviar_correo',methods=['GET','POST'])
-def enviar_correo ():
-    if request.method == 'POST':
-        email = request.form['correo']
-        numero_confirmacion = ''.join(random.choice('123456789', k=6))
+    flash('Se ha enviado un correo de confirmación. Por favor, revisa tu bandeja de entrada.', 'success')
+    return redirect(url_for('index'))
 
-        mensaje = Message('Confirmacion de registro', sender = '4dm1n1str4d0r.upq.encuesta.2024@gmail.com', recipients=[email])
-        mensaje.body(f'Tu numero de confirmación es: {numero_confirmacion}.\n 
-                    Para confirmar tu registro sera nece')'''
+@app.route('/confirmar_registro', methods = ['GET'])
+def confirmar_registro():
 
+    numero_confirmacion = session.get('numeroDeConfirmacion')
+    if numero_confirmacion:
+        numero_confirmacion = request.args.get('numero_confirmacion')
+        
+    
 
 
 if __name__ == '__main__':
