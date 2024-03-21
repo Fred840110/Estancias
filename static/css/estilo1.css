@@ -1,0 +1,43 @@
+
+body{
+    /*background-image: url('/static/css/images/v1016-b-09.jpg');*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin:0;
+    padding: 0;
+    height: 100%;
+}
+.titulo{
+    color: #788199;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f0f098;
+    text-align: center;
+    padding: 10px;
+    margin:0px;
+
+}
+.cuestionario{
+    background: #65727caf;
+    display: flex;
+    width: 1200px;
+    height: 100%;
+    margin-top: 20px;
+    padding: 10px 10px;
+}
+.question{
+    background: #535b61;
+    display: flexbox;
+    margin: 10px;
+    padding: 5px 10px;
+    width: 1100px;
+    text-align: justify;
+    font-size: 25px;
+    color:white;
+    border-radius: 10px;;
+}
+.question input{
+    margin-top: 10px;
+    margin-left:30px;
+}
