@@ -7,9 +7,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@400..700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    
+    
     <link rel="stylesheet" href="/static/css/estilo1.css">
 
 
@@ -17,7 +22,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light-subtle">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark-subtle">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Encuesta </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -28,7 +33,11 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house"></i></a>
+                        <a class="nav-link active" aria-current="page" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+                            </svg>
+                        </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -60,307 +69,643 @@
         <h1>Cuestionario Seguridad en el trabajo</h1>
     </div>
     <div class="cuestionario">
+        
         <form action="/procesar respuesta" id="quizform" method="POST">
 
-            <div class="question">
-                <label>1. El espacio donde trabajo me permite realizar mis actividades de manera segura e
-                    higiénica</label><br>
-                <input type="radio" name="q1" value="0"> Siempre
-                <input type="radio" name="q1" value="1"> Casi siempre
-                <input type="radio" name="q1" value="2"> Algunas veces
-                <input type="radio" name="q1" value="3"> Casi nunca
-                <input type="radio" name="q1" value="4"> Nunca
+            <div class="cuestionario_seccion_a">
+                <p class="seccion">Para responder las siguientes preguntas considere las condiciones ambientales de su centro de trabajo</p>
+                <!-- 1 -->
+                <div class="question">
+                    <label>1. El espacio donde trabajo me permite realizar mis actividades de manera segura e higiénica</label><br>
+                    <input type="radio" name="q1" value="0" required> Siempre
+                    <input type="radio" name="q1" value="1" required> Casi siempre
+                    <input type="radio" name="q1" value="2" required> Algunas veces
+                    <input type="radio" name="q1" value="3" required> Casi nunca
+                    <input type="radio" name="q1" value="4" required> Nunca
+                </div>
+                <!-- 2 -->
+                <div class="question">
+                    <label>2. Mi trabajo me exige hacer mucho esfuerzo físico</label><br>
+                    <input type="radio" name="q2" value="4" required> Siempre
+                    <input type="radio" name="q2" value="3" required> Casi siempre
+                    <input type="radio" name="q2" value="2" required> Algunas veces
+                    <input type="radio" name="q2" value="1" required> Casi nunca
+                    <input type="radio" name="q2" value="0" required> Nunca
+                </div>
+                <!-- 3 -->
+                <div class="question">
+                    <label>3. Me preocupa sufrir un accidente en mi trabajo</label><br>
+                    <input type="radio" name="q3" value="4" required> Siempre
+                    <input type="radio" name="q3" value="3" required> Casi siempre
+                    <input type="radio" name="q3" value="2" required> Algunas veces
+                    <input type="radio" name="q3" value="1" required> Casi nunca
+                    <input type="radio" name="q3" value="0" required> Nunca
+                </div>
+                <!-- 4 -->
+                <div class="question">
+                    <label>4. Considero que en mi trabajo se aplican las normas de seguridad y salud en el trabajo</label><br>
+                    <input type="radio" name="q4" value="0" required> Siempre
+                    <input type="radio" name="q4" value="1" required> Casi siempre
+                    <input type="radio" name="q4" value="2" required> Algunas veces
+                    <input type="radio" name="q4" value="3" required> Casi nunca
+                    <input type="radio" name="q4" value="4" required> Nunca
+                </div>
+                <!-- 5 -->
+                <div class="question">
+                    <label>5. Considero que las actividades que realizo son peligrosas</label><br>
+                    <input type="radio" name="q5" value="4" required> Siempre
+                    <input type="radio" name="q5" value="3" required> Casi siempre
+                    <input type="radio" name="q5" value="2" required> Algunas veces
+                    <input type="radio" name="q5" value="1" required> Casi nunca
+                    <input type="radio" name="q5" value="0" required> Nunca
+                </div>
             </div>
-            <div class="question">
-                <label>2. Mi trabajo me exige hacer mucho esfuerzo físico</label><br>
-                <input type="radio" name="q2" value="0"> Siempre
-                <input type="radio" name="q2" value="1"> Casi siempre
-                <input type="radio" name="q2" value="2"> Algunas veces
-                <input type="radio" name="q2" value="3"> Casi nunca
-                <input type="radio" name="q2" value="4"> Nunca
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------->
+            <div class="cuestionario_seccion_b">
+                <p class="seccion">Para responder a las preguntas siguientes piense en la cantidad y ritmo de trabajo que tiene </p>
+                <!-- 6 -->
+                <div class="question">
+                    <label>6. Me preocupa sufrir un accidente en mi trabajo</label><br>
+                    <input type="radio" name="q6" value="4" required> Siempre
+                    <input type="radio" name="q6" value="3" required> Casi siempre
+                    <input type="radio" name="q6" value="2" required> Algunas veces
+                    <input type="radio" name="q6" value="1" required> Casi nunca
+                    <input type="radio" name="q6" value="0" required> Nunca
+                </div>
+                <!-- 7 -->
+                <div class="question">
+                    <label>7. Me preocupa sufrir un accidente en mi trabajo</label><br>
+                    <input type="radio" name="q7" value="4" required> Siempre
+                    <input type="radio" name="q7" value="3" required> Casi siempre
+                    <input type="radio" name="q7" value="2" required> Algunas veces
+                    <input type="radio" name="q7" value="1" required> Casi nunca
+                    <input type="radio" name="q7" value="0" required> Nunca
+                </div>
+                <!-- 8 -->
+                <div class="question">
+                    <label>8. Me preocupa sufrir un accidente en mi trabajo</label><br>
+                    <input type="radio" name="q8" value="4" required> Siempre
+                    <input type="radio" name="q8" value="3" required> Casi siempre
+                    <input type="radio" name="q8" value="2" required> Algunas veces
+                    <input type="radio" name="q8" value="1" required> Casi nunca
+                    <input type="radio" name="q8" value="0" required> Nunca
+                </div>
             </div>
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------->
+        <div class="cuestionario_seccion_c">
+            <p class="seccion">Las preguntas siguientes están relacionadas con el esfuerzo mental que le exige su trabajo</p>
+            <!-- 9 -->
+            <div class="question">
+                <label>9. Mi trabajo exige que este muy concentrado </label><br>
+                <input type="radio" name="q9" value="4" required> Siempre
+                <input type="radio" name="q9" value="3" required> Casi siempre
+                <input type="radio" name="q9" value="2" required> Algunas veces
+                <input type="radio" name="q9" value="1" required> Casi nunca
+                <input type="radio" name="q9" value="0" required> Nunca
+            </div>
+            <!-- 10 -->
+            <div class="question">
+                <label>10. Mi trabajo requiere que memorice mucha información </label><br>
+                <input type="radio" name="q10" value="4" required> Siempre
+                <input type="radio" name="q10" value="3" required> Casi siempre
+                <input type="radio" name="q10" value="2" required> Algunas veces
+                <input type="radio" name="q10" value="1" required> Casi nunca
+                <input type="radio" name="q10" value="0" required> Nunca
+            </div>
+            <!-- 11 -->
+            <div class="question">
+                <label>11. En mi trabajo tengo que tomar decisiones difíciles mur rápido </label><br>
+                <input type="radio" name="q11" value="4" required> Siempre
+                <input type="radio" name="q11" value="3" required> Casi siempre
+                <input type="radio" name="q11" value="2" required> Algunas veces
+                <input type="radio" name="q11" value="1" required> Casi nunca
+                <input type="radio" name="q11" value="0" required> Nunca
+            </div>
+            <!-- 12 -->
+            <div class="question">
+                <label>12. Mi trabajo exife que atienda varios asuntos al mismo tiempo  </label><br>
+                <input type="radio" name="q12" value="4" required> Siempre
+                <input type="radio" name="q12" value="3" required> Casi siempre
+                <input type="radio" name="q12" value="2" required> Algunas veces
+                <input type="radio" name="q12" value="1" required> Casi nunca
+                <input type="radio" name="q12" value="0" required> Nunca
+            </div>
+        </div>
+<!--------------------------------------------------------------------------------------------------------------------------------------------------------->
+            <div class="cuestionario_seccion_d">
+                <p class="seccion">Las preguntas siguientes están relacionadas con las actividades que realiza en su trabajo y 
+                    las responsabilidades que tiene</p>
+            <!-- 13 -->
+                <div class="question">
+                    <label>13. En mi trabajo soy responsable de cosas de mucho valor </label><br>
+                    <input type="radio" name="q13" value="4" required> Siempre
+                    <input type="radio" name="q13" value="3" required> Casi siempre
+                    <input type="radio" name="q13" value="2" required> Algunas veces
+                    <input type="radio" name="q13" value="1" required> Casi nunca
+                    <input type="radio" name="q13" value="0" required> Nunca
+                </div>
+                <!-- 14 -->
+                <div class="question">
+                    <label>14. Respondo ante mi jefe por los resultados de toda mi área de trabajo </label><br>
+                    <input type="radio" name="q14" value="4" required> Siempre
+                    <input type="radio" name="q14" value="3" required> Casi siempre
+                    <input type="radio" name="q14" value="2" required> Algunas veces
+                    <input type="radio" name="q14" value="1" required> Casi nunca
+                    <input type="radio" name="q14" value="0" required> Nunca
+                </div>
+                <!-- 15 -->
+                <div class="question">
+                    <label>15. En el trabajo me dan órdenes contradictorias </label><br>
+                    <input type="radio" name="q15" value="4" required> Siempre
+                    <input type="radio" name="q15" value="3" required> Casi siempre
+                    <input type="radio" name="q15" value="2" required> Algunas veces
+                    <input type="radio" name="q15" value="1" required> Casi nunca
+                    <input type="radio" name="q15" value="0" required> Nunca
+                </div>
+                <!-- 16 -->
+                <div class="question">
+                    <label>16. Cpndisdero que en mi trabajo me piden hacer cosas innecesarias  </label><br>
+                    <input type="radio" name="q16" value="4" required> Siempre
+                    <input type="radio" name="q16" value="3" required> Casi siempre
+                    <input type="radio" name="q16" value="2" required> Algunas veces
+                    <input type="radio" name="q16" value="1" required> Casi nunca
+                    <input type="radio" name="q16" value="0" required> Nunca
+                </div>
+            </div>
+<!----------------------------------------------------------------------------------------------------------------------------------------------------->
+        <div class="cuestionario_seccion_e">
+            <p class="seccion"> Las preguntas siguientes están realcionadas con su jornada de trabajo </p>
+            <!-- 17 -->
+                <div class="question">
+                    <label>17. Trabajo horas extras más de tres veces a la semana</label><br>
+                    <input type="radio" name="q17" value="4" required> Siempre
+                    <input type="radio" name="q17" value="3" required> Casi siempre
+                    <input type="radio" name="q17" value="2" required> Algunas veces
+                    <input type="radio" name="q17" value="1" required> Casi nunca
+                    <input type="radio" name="q17" value="0" required> Nunca
+                </div>
+                <!-- 18 -->
+                <div class="question">
+                    <label>18. Mi trabajo me exige laborar en días de descanso, festivos o fines de semana </label><br>
+                    <input type="radio" name="q18" value="4" required> Siempre
+                    <input type="radio" name="q18" value="3" required> Casi siempre
+                    <input type="radio" name="q18" value="2" required> Algunas veces
+                    <input type="radio" name="q18" value="1" required> Casi nunca
+                    <input type="radio" name="q18" value="0" required> Nunca
+                </div>
+                <!-- 19 -->
+                <div class="question">
+                    <label>19. Considero que el tiempo en el trabajo es mucho y perjudica mis actividades familiares o personales </label><br>
+                    <input type="radio" name="q19" value="4" required> Siempre
+                    <input type="radio" name="q19" value="3" required> Casi siempre
+                    <input type="radio" name="q19" value="2" required> Algunas veces
+                    <input type="radio" name="q19" value="1" required> Casi nunca
+                    <input type="radio" name="q19" value="0" required> Nunca
+                </div>
+                <!-- 20 -->
+                <div class="question">
+                    <label>20. Debo atender asuntos de trabajo cuando estoy en casa </label><br>
+                    <input type="radio" name="q20" value="4" required> Siempre
+                    <input type="radio" name="q20" value="3" required> Casi siempre
+                    <input type="radio" name="q20" value="2" required> Algunas veces
+                    <input type="radio" name="q20" value="1" required> Casi nunca
+                    <input type="radio" name="q20" value="0" required> Nunca
+                </div>
+                <!-- 21 -->
+                <div class="question">
+                    <label>21. Pienso en las actividades familiares o personales cuando estoy en mi trabajo </label><br>
+                    <input type="radio" name="q21" value="4" required> Siempre
+                    <input type="radio" name="q21" value="3" required> Casi siempre
+                    <input type="radio" name="q21" value="2" required> Algunas veces
+                    <input type="radio" name="q21" value="1" required> Casi nunca
+                    <input type="radio" name="q21" value="0" required> Nunca
+                </div>
+                <!-- 22 -->
+                <div class="question">
+                    <label>22. Pienso que mis responsabilidades familiares afectan mi trabajo </label><br>
+                    <input type="radio" name="q22" value="4" required> Siempre
+                    <input type="radio" name="q22" value="3" required> Casi siempre
+                    <input type="radio" name="q22" value="2" required> Algunas veces
+                    <input type="radio" name="q22" value="1" required> Casi nunca
+                    <input type="radio" name="q22" value="0" required> Nunca
+                </div>
+            </div>
+<!----------------------------------------------------------------------------------------------------------------------------------------------------->
+            <div class="cuestionario_seccion_f">    
+                <p class="seccion"> Las preguntas siguientes están relacionadas con las decisiones que puede tomar en su trabajo. </p>
+                <!-- 23 -->
+                <div class="question">
+                    <label>23. Mi trabajo permite que desarrolle nuevas habilidades </label><br>
+                    <input type="radio" name="q23" value="0" required> Siempre
+                    <input type="radio" name="q23" value="1" required> Casi siempre
+                    <input type="radio" name="q23" value="2" required> Algunas veces
+                    <input type="radio" name="q23" value="3" required> Casi nunca
+                    <input type="radio" name="q23" value="4" required> Nunca
+                </div>
+                <!-- 24 -->
+                <div class="question">
+                    <label>24.En mi trabajo puedo aspirar a un mejor puesto </label><br>
+                    <input type="radio" name="q24" value="0" required> Siempre
+                    <input type="radio" name="q24" value="1" required> Casi siempre
+                    <input type="radio" name="q24" value="2" required> Algunas veces
+                    <input type="radio" name="q24" value="3" required> Casi nunca
+                    <input type="radio" name="q24" value="4" required> Nunca
+                </div>
+                <!-- 25 -->
+                <div class="question">
+                    <label>25. Durante mi jornada de trabajo puedo tomar pausas cuando las necesito </label><br>
+                    <input type="radio" name="q25" value="0" required> Siempre
+                    <input type="radio" name="q25" value="1" required> Casi siempre
+                    <input type="radio" name="q25" value="2" required> Algunas veces
+                    <input type="radio" name="q25" value="3" required> Casi nunca
+                    <input type="radio" name="q25" value="4" required> Nunca
+                </div>
+                <!-- 26 -->
+                <div class="question">
+                    <label>26. Puedo decidir cuánto trabajo realizo durante la jornada laboral </label><br>
+                    <input type="radio" name="q26" value="0" required> Siempre
+                    <input type="radio" name="q26" value="1" required> Casi siempre
+                    <input type="radio" name="q26" value="2" required> Algunas veces
+                    <input type="radio" name="q26" value="3" required> Casi nunca
+                    <input type="radio" name="q26" value="4" required> Nunca
+                </div>
+                <!-- 27 -->
+                <div class="question">
+                    <label>27. Puedo decidir la velocidad a la que realizo mis actividades en mi trabajo </label><br>
+                    <input type="radio" name="q27" value="0" required> Siempre
+                    <input type="radio" name="q27" value="1" required> Casi siempre
+                    <input type="radio" name="q27" value="2" required> Algunas veces
+                    <input type="radio" name="q27" value="3" required> Casi nunca
+                    <input type="radio" name="q27" value="4" required> Nunca
+                </div>
+                <!-- 28 -->
+                <div class="question">
+                    <label>28. Puedo cambiar el orden de las actividades que realizo en mi trabajo </label><br>
+                    <input type="radio" name="q28" value="0" required> Siempre
+                    <input type="radio" name="q28" value="1" required> Casi siempre
+                    <input type="radio" name="q28" value="2" required> Algunas veces
+                    <input type="radio" name="q28" value="3" required> Casi nunca
+                    <input type="radio" name="q28" value="4" required> Nunca
+                </div>
+            </div>
+<!------------------------------------------------------------------------------------------------------------------------------------------------------>
+            <div class="cuestionario_seccion_g">
+                <p class="seccion">Las preguntas siguientes están relacionadas con cualquier tipo de cambio que ocurra 
+                    en su trabajo (considere los últimos cambios realizados).</p>
+                <!-- 29 -->
+                <div class="question">
+                    <label>29. Los cambios que se presentan en mi trabajo dificultan mi labor</label><br>
+                    <input type="radio" name="q29" value="4" required> Siempre
+                    <input type="radio" name="q29" value="3" required> Casi siempre
+                    <input type="radio" name="q29" value="2" required> Algunas veces
+                    <input type="radio" name="q29" value="1" required> Casi nunca
+                    <input type="radio" name="q29" value="0" required> Nunca
+                </div>
+                <!-- 30 -->
+                <div class="question">
+                    <label>30. Cuando se presentan cambios en mi trabajo se tienen en cuenta mis ideas o aportaciones </label><br>
+                    <input type="radio" name="q30" value="0" required> Siempre
+                    <input type="radio" name="q30" value="1" required> Casi siempre
+                    <input type="radio" name="q30" value="2" required> Algunas veces
+                    <input type="radio" name="q30" value="3" required> Casi nunca
+                    <input type="radio" name="q30" value="4" required> Nunca
+                </div>
+            </div>
+<!------------------------------------------------------------------------------------------------------------------------------------------------------>
+            <div class="cuestionario_seccion_h">
+                <p class="seccion">Las preguntas siguientes están relacionadas con la capacitación e información que se le proporciona sobre su 
+                    trabajo.</p>    
+                <!-- 31 -->
+                <div class="question">
+                    <label>31. Me informan con claridad cuáles son mis funciones </label><br>
+                    <input type="radio" name="q31" value="0" required> Siempre
+                    <input type="radio" name="q31" value="1" required> Casi siempre
+                    <input type="radio" name="q31" value="2" required> Algunas veces
+                    <input type="radio" name="q31" value="3" required> Casi nunca
+                    <input type="radio" name="q31" value="4" required> Nunca
+                </div>
+                <!-- 32 -->
+                <div class="question">
+                    <label>32. Me explican claramente los resultados que debo obtener en mi trabajo </label><br>
+                    <input type="radio" name="q32" value="0" required> Siempre
+                    <input type="radio" name="q32" value="1" required> Casi siemp31
+                    <input type="radio" name="q32" value="2" required> Algunas veces
+                    <input type="radio" name="q32" value="3" required> Casi nunca
+                    <input type="radio" name="q32" value="4" required> Nunca
+                </div>
+                <!-- 33 -->
+                <div class="question">
+                    <label>33. Me explican claramente los objetivos de mi trabajo </label><br>
+                    <input type="radio" name="q33" value="0" required> Siempre
+                    <input type="radio" name="q33" value="1" required> Casi siempre
+                    <input type="radio" name="q33" value="2" required> Algunas veces
+                    <input type="radio" name="q33" value="3" required> Casi nunca
+                    <input type="radio" name="q33" value="4" required> Nunca
+                </div>
+                <!-- 34-->
+                <div class="question">
+                    <label>34. Me informan con quién puedo resolver problemas o asuntos de trabajo </label><br>
+                    <input type="radio" name="q34" value="0" required> Siempre
+                    <input type="radio" name="q34" value="1" required> Casi siempre
+                    <input type="radio" name="q34" value="2" required> Algunas veces
+                    <input type="radio" name="q34" value="3" required> Casi nunca
+                    <input type="radio" name="q34" value="4" required> Nunca
+                </div>
+                <!-- 35 -->
+                <div class="question">
+                    <label>35. Me permiten asistir a capacitaciones relacionadas con mi trabajo </label><br>
+                    <input type="radio" name="q35" value="0" required> Siempre
+                    <input type="radio" name="q35" value="1" required> Casi siempre
+                    <input type="radio" name="q35" value="2" required> Algunas veces
+                    <input type="radio" name="q35" value="3" required> Casi nunca
+                    <input type="radio" name="q35" value="4" required> Nunca
+                </div>
+                <!-- 36 -->
+                <div class="question">
+                    <label>36. Recibo capacitación útil para hacer mi trabajo </label><br>
+                    <input type="radio" name="q36" value="0" required> Siempre
+                    <input type="radio" name="q36" value="1" required> Casi siempre
+                    <input type="radio" name="q36" value="2" required> Algunas veces
+                    <input type="radio" name="q36" value="3" required> Casi nunca
+                    <input type="radio" name="q36" value="4" required> Nunca
+                </div>
+            </div>
+<!------------------------------------------------------------------------------------------------------------------------------------------------------>
+            <div class="cuestionario_seccion_j">
+                <p class="seccion">Las preguntas siguientes están relacionadas con el o los jefes con quien tine contacto </p>
+                <!-- 37 -->
+                <div class="question">
+                    <label>37. Mi jefe ayuda a organizar mejor el trabajo </label><br>
+                    <input type="radio" name="q37" value="0" required> Siempre
+                    <input type="radio" name="q37" value="1" required> Casi siempre
+                    <input type="radio" name="q37" value="2" required> Algunas veces
+                    <input type="radio" name="q37" value="3" required> Casi nunca
+                    <input type="radio" name="q37" value="4" required> Nunca
+                </div>
+                <!-- 38 -->
+                <div class="question">
+                    <label>38. Mi jefe tiene en cuenta mis puntos de vista y opiniones </label><br>
+                    <input type="radio" name="q38" value="0" required> Siempre
+                    <input type="radio" name="q38" value="1" required> Casi siempre
+                    <input type="radio" name="q38" value="2" required> Algunas veces
+                    <input type="radio" name="q38" value="3" required> Casi nunca
+                    <input type="radio" name="q38" value="4" required> Nunca
+                </div>
+                <!-- 39 -->
+                <div class="question">
+                    <label>39. Mi jefe me comunica a tiempo la información relacionada con el trabajo </label><br>
+                    <input type="radio" name="q39" value="0" required> Siempre
+                    <input type="radio" name="q39" value="1" required> Casi siempre
+                    <input type="radio" name="q39" value="2" required> Algunas veces
+                    <input type="radio" name="q39" value="3" required> Casi nunca
+                    <input type="radio" name="q39" value="4" required> Nunca
+                </div>
+                <!-- 40 -->
+                <div class="question">
+                    <label>40. La orientación que me da mi jefe me ayuda a realizar mejor mi trabajo </label><br>
+                    <input type="radio" name="q40" value="0" required> Siempre
+                    <input type="radio" name="q40" value="1" required> Casi siempre
+                    <input type="radio" name="q40" value="2" required> Algunas veces
+                    <input type="radio" name="q40" value="3" required> Casi nunca
+                    <input type="radio" name="q40" value="4" required> Nunca
+                </div>
+                <!-- 41 -->
+                <div class="question">
+                    <label>41. Mi jefe ayuda a solucionar los problemas que se presentan en el trabajo</label><br>
+                    <input type="radio" name="q41" value="0" required> Siempre
+                    <input type="radio" name="q41" value="1" required> Casi siempre
+                    <input type="radio" name="q41" value="2" required> Algunas veces
+                    <input type="radio" name="q41" value="3" required> Casi nunca
+                    <input type="radio" name="q41" value="4" required> Nunca
+                </div>
+            </div>
+<!----------------------------------------------------------------------------------------------------------------------------------------------------->
+            <div class="cuestionario_seccion_k">
+                <p class="seccion">Las preguntas siguientes se refieren a las relaciones con sus compañeros. </p>
+                <!-- 42 -->
+                <div class="question">
+                    <label>42. Puedo confiar en mis compañeros de trabajo </label><br>
+                    <input type="radio" name="q42" value="0" required> Siempre
+                    <input type="radio" name="q42" value="1" required> Casi siempre
+                    <input type="radio" name="q42" value="2" required> Algunas veces
+                    <input type="radio" name="q42" value="3" required> Casi nunca
+                    <input type="radio" name="q42" value="4" required> Nunca
+                </div>
+                <!-- 43 -->
+                <div class="question">
+                    <label>43. Entre compañeros solucionamos los problemas de trabajo de forma respetuosa </label><br>
+                    <input type="radio" name="q43" value="0" required> Siempre
+                    <input type="radio" name="q43" value="1" required> Casi siempre
+                    <input type="radio" name="q43" value="2" required> Algunas veces
+                    <input type="radio" name="q43" value="3" required> Casi nunca
+                    <input type="radio" name="q43" value="4" required> Nunca
+                </div>
+                <!-- 44 -->
+                <div class="question">
+                    <label>44. En mi trabajo me hacen sentir parte del grupo</label><br>
+                    <input type="radio" name="q44" value="0" required> Siempre
+                    <input type="radio" name="q44" value="1" required> Casi siempre
+                    <input type="radio" name="q44" value="2" required> Algunas veces
+                    <input type="radio" name="q44" value="3" required> Casi nunca
+                    <input type="radio" name="q44" value="4" required> Nunca
+                </div>
+                <!-- 45 -->
+                <div class="question">
+                    <label>45. Cuando tenemos que realizar trabajo de equipo los compañeros colaboran </label><br>
+                    <input type="radio" name="q45" value="0" required> Siempre
+                    <input type="radio" name="q45" value="1" required> Casi siempre
+                    <input type="radio" name="q45" value="2" required> Algunas veces
+                    <input type="radio" name="q45" value="3" required> Casi nunca
+                    <input type="radio" name="q45" value="4" required> Nunca
+                </div>
+                <!-- 46 -->
+                <div class="question">
+                    <label>46. Mis compañeros de trabajo me ayudan cuando tengo dificultades </label><br>
+                    <input type="radio" name="q46" value="0" required> Siempre
+                    <input type="radio" name="q46" value="1" required> Casi siempre
+                    <input type="radio" name="q46" value="2" required> Algunas veces
+                    <input type="radio" name="q46" value="3" required> Casi nunca
+                    <input type="radio" name="q46" value="4" required> Nunca
+                </div>
+            </div>
+<!----------------------------------------------------------------------------------------------------------------------------------------------------->
+            <div class="cuestionario_seccion_m">
+                <p class="seccion">Las preguntas siguientes están relacionadas con la información que recibe sobre su rendimiento en el trabajo, el reconocimiento, 
+                    el sentido de pertenencia y la estabilidad que le ofrece su trabajo.</p>
+                <!-- 47 -->
+                <div class="question">
+                    <label>47. Me informan sobre lo que hago bien en mi trabajo </label><br>
+                    <input type="radio" name="q47" value="0" required> Siempre
+                    <input type="radio" name="q47" value="1" required> Casi siempre
+                    <input type="radio" name="q47" value="2" required> Algunas veces
+                    <input type="radio" name="q47" value="3" required> Casi nunca
+                    <input type="radio" name="q47" value="4" required> Nunca
+                </div>
+                <!-- 48 -->
+                <div class="question">
+                    <label>48. La forma como evalúan mi trabajo en mi centro de trabajo me ayuda a mejorar mi desempeño </label><br>
+                    <input type="radio" name="q48" value="0" required> Siempre
+                    <input type="radio" name="q48" value="1" required> Casi siempre
+                    <input type="radio" name="q48" value="2" required> Algunas veces
+                    <input type="radio" name="q48" value="3" required> Casi nunca
+                    <input type="radio" name="q48" value="4" required> Nunca
+                </div>
+                <!-- 49 -->
+                <div class="question">
+                    <label>49. En mi centro de trabajo me pagan a tiempo mi salario</label><br>
+                    <input type="radio" name="q49" value="0" required> Siempre
+                    <input type="radio" name="q49" value="1" required> Casi siempre
+                    <input type="radio" name="q49" value="2" required> Algunas veces
+                    <input type="radio" name="q49" value="3" required> Casi nunca
+                    <input type="radio" name="q49" value="4" required> Nunca
+                </div>
+                <!-- 50 -->
+                <div class="question">
+                    <label>50. El pago que recibo es el que merezco por el trabajo que realizo </label><br>
+                    <input type="radio" name="q50" value="0" required> Siempre
+                    <input type="radio" name="q50" value="1" required> Casi siempre
+                    <input type="radio" name="q50" value="2" required> Algunas veces
+                    <input type="radio" name="q50" value="3" required> Casi nunca
+                    <input type="radio" name="q50" value="4" required> Nunca
+                </div>
+                <!-- 51 -->
+                <div class="question">
+                    <label>51. Si obtengo los resultados esperados en mi trabajo me recompensan o reconocen </label><br>
+                    <input type="radio" name="q51" value="0" required> Siempre
+                    <input type="radio" name="q51" value="1" required> Casi siempre
+                    <input type="radio" name="q51" value="2" required> Algunas veces
+                    <input type="radio" name="q51" value="3" required> Casi nunca
+                    <input type="radio" name="q51" value="4" required> Nunca
+                </div>
+                <!-- 52 -->
+                <div class="question">
+                    <label>52. Las personas que hacen bien el trabajo pueden crecer laboralmente </label><br>
+                    <input type="radio" name="q52" value="0" required> Siempre
+                    <input type="radio" name="q52" value="1" required> Casi siempre
+                    <input type="radio" name="q52" value="2" required> Algunas veces
+                    <input type="radio" name="q52" value="3" required> Casi nunca
+                    <input type="radio" name="q52" value="4" required> Nunca
+                </div>
+                <!-- 53 -->
+                <div class="question">
+                    <label>53. Considero que mi trabajo es estable </label><br>
+                    <input type="radio" name="q53" value="0" required> Siempre
+                    <input type="radio" name="q53" value="1" required> Casi siempre
+                    <input type="radio" name="q53" value="2" required> Algunas veces
+                    <input type="radio" name="q53" value="3" required> Casi nunca
+                    <input type="radio" name="q53" value="4" required> Nunca
+                </div>
+                <!-- 54 -->
+                <div class="question">
+                    <label>54. En mi trabajo existe continua rotación de personal </label><br>
+                    <input type="radio" name="q54" value="4" required> Siempre
+                    <input type="radio" name="q54" value="3" required> Casi siempre
+                    <input type="radio" name="q54" value="2" required> Algunas veces
+                    <input type="radio" name="q54" value="1" required> Casi nunca
+                    <input type="radio" name="q54" value="0" required> Nunca
+                </div>
+                <!-- 55 -->
+                <div class="question">
+                    <label>55. Siento orgullo de laborar en este centro de trabajo </label><br>
+                    <input type="radio" name="q55" value="0" required> Siempre
+                    <input type="radio" name="q55" value="1" required> Casi siempre
+                    <input type="radio" name="q55" value="2" required> Algunas veces
+                    <input type="radio" name="q55" value="3" required> Casi nunca
+                    <input type="radio" name="q55" value="4" required> Nunca
+                </div>
+                <!-- 56 -->
+                <div class="question">
+                    <label>56. Me siento comprometido con mi trabajo </label><br>
+                    <input type="radio" name="q56" value="0" required> Siempre
+                    <input type="radio" name="q56" value="1" required> Casi siempre
+                    <input type="radio" name="q56" value="2" required> Algunas veces
+                    <input type="radio" name="q56" value="3" required> Casi nunca
+                    <input type="radio" name="q56" value="4" required> Nunca
+                </div>
 
-            <div class="question">
-                <label>3. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q3" value="0"> Siempre
-                <input type="radio" name="q3" value="1"> Casi siempre
-                <input type="radio" name="q3" value="2"> Algunas veces
-                <input type="radio" name="q3" value="3"> Casi nunca
-                <input type="radio" name="q3" value="4"> Nunca
             </div>
+<!----------------------------------------------------------------------------------------------------------------------------------------------------->
+            <div class="cuestionario_seccion_n">
+                <p class="seccion">
+                    Las preguntas siguientes están relacionadas con actos de violencia laboral (malos tratos, acoso, hostigamiento, acoso psicológico).
+                </p>
+                <!-- 57 -->
+                <div class="question">
+                    <label>57. En mi trabajo puedo expresarme libremente sin interrupciones </label><br>
+                    <input type="radio" name="q57" value="0" required> Siempre
+                    <input type="radio" name="q57" value="1" required> Casi siempre
+                    <input type="radio" name="q57" value="2" required> Algunas veces
+                    <input type="radio" name="q57" value="3" required> Casi nunca
+                    <input type="radio" name="q57" value="4" required> Nunca
+                </div>
+                <!-- 58 -->
+                <div class="question">
+                    <label>58. Recibo críticas constantes a mi persona y/o trabajo </label><br>
+                    <input type="radio" name="q58" value="4" required> Siempre
+                    <input type="radio" name="q58" value="3" required> Casi siempre
+                    <input type="radio" name="q58" value="2" required> Algunas veces
+                    <input type="radio" name="q58" value="1" required> Casi nunca
+                    <input type="radio" name="q58" value="0" required> Nunca
+                </div>
+                <!-- 59 -->
+                <div class="question">
+                    <label>59. Recibo burlas, calumnias, difamaciones, humillaciones o ridiculizaciones </label><br>
+                    <input type="radio" name="q59" value="4" required> Siempre
+                    <input type="radio" name="q59" value="3" required> Casi siempre
+                    <input type="radio" name="q59" value="2" required> Algunas veces
+                    <input type="radio" name="q59" value="1" required> Casi nunca
+                    <input type="radio" name="q59" value="0" required> Nunca
+                </div>
+                <!-- 60 -->
+                <div class="question">
+                    <label>60. Se ignora mi presencia o se me excluye de las reuniones de trabajo y en la toma de decisiones </label><br>
+                    <input type="radio" name="q60" value="4" required> Siempre
+                    <input type="radio" name="q60" value="3" required> Casi siempre
+                    <input type="radio" name="q60" value="2" required> Algunas veces
+                    <input type="radio" name="q60" value="1" required> Casi nunca
+                    <input type="radio" name="q60" value="0" required> Nunca
+                </div>
+                <!-- 61 -->
+                <div class="question">
+                    <label>61. Se manipulan las situaciones de trabajo para hacerme parecer un mal trabajador </label><br>
+                    <input type="radio" name="q61" value="4" required> Siempre
+                    <input type="radio" name="q61" value="3" required> Casi siempre
+                    <input type="radio" name="q61" value="2" required> Algunas veces
+                    <input type="radio" name="q61" value="1" required> Casi nunca
+                    <input type="radio" name="q61" value="0" required> Nunca
+                </div>
+                <!-- 62 -->
+                <div class="question">
+                    <label>62. Se ignoran mis éxitos laborales y se atribuyen a otros trabajadores </label><br>
+                    <input type="radio" name="q62" value="4" required> Siempre
+                    <input type="radio" name="q62" value="3" required> Casi siempre
+                    <input type="radio" name="q62" value="2" required> Algunas veces
+                    <input type="radio" name="q62" value="1" required> Casi nunca
+                    <input type="radio" name="q62" value="0" required> Nunca
+                </div>
+                <!-- 63 -->
+                <div class="question">
+                    <label>63. Me bloquean o impiden las oportunidades que tengo para obtener ascenso o mejora en mi trabajo </label><br>
+                    <input type="radio" name="q63" value="4" required> Siempre
+                    <input type="radio" name="q63" value="3" required> Casi siempre
+                    <input type="radio" name="q63" value="2" required> Algunas veces
+                    <input type="radio" name="q63" value="1" required> Casi nunca
+                    <input type="radio" name="q63" value="0" required> Nunca
+                </div>
+                <!-- 64 -->
+                <div class="question">
+                    <label>64. He presenciado actos de violencia en mi centro de trabajo </label><br>
+                    <input type="radio" name="q64" value="4" required> Siempre
+                    <input type="radio" name="q64" value="3" required> Casi siempre
+                    <input type="radio" name="q64" value="2" required> Algunas veces
+                    <input type="radio" name="q64" value="1" required> Casi nunca
+                    <input type="radio" name="q64" value="0" required> Nunca
+                </div>
 
-            <div class="question">
-                <label>4. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q4" value="0"> Siempre
-                <input type="radio" name="q4" value="1"> Casi siempre
-                <input type="radio" name="q4" value="2"> Algunas veces
-                <input type="radio" name="q4" value="3"> Casi nunca
-                <input type="radio" name="q4" value="4"> Nunca
+                <!--Hacemos el boton de envio del formulario-->
+                <input class="boton" type="submit" value="Enviar respuestas">
+                
             </div>
-
-            <div class="question">
-                <label>5. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q5" value="0"> Siempre
-                <input type="radio" name="q5" value="1"> Casi siempre
-                <input type="radio" name="q5" value="2"> Algunas veces
-                <input type="radio" name="q5" value="3"> Casi nunca
-                <input type="radio" name="q5" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>6. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q6" value="0"> Siempre
-                <input type="radio" name="q6" value="1"> Casi siempre
-                <input type="radio" name="q6" value="2"> Algunas veces
-                <input type="radio" name="q6" value="3"> Casi nunca
-                <input type="radio" name="q6" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>7. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q7" value="0"> Siempre
-                <input type="radio" name="q7" value="1"> Casi siempre
-                <input type="radio" name="q7" value="2"> Algunas veces
-                <input type="radio" name="q7" value="3"> Casi nunca
-                <input type="radio" name="q7" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>8. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q8" value="0"> Siempre
-                <input type="radio" name="q8" value="1"> Casi siempre
-                <input type="radio" name="q8" value="2"> Algunas veces
-                <input type="radio" name="q8" value="3"> Casi nunca
-                <input type="radio" name="q8" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>9. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q9" value="0"> Siempre
-                <input type="radio" name="q9" value="1"> Casi siempre
-                <input type="radio" name="q9" value="2"> Algunas veces
-                <input type="radio" name="q9" value="3"> Casi nunca
-                <input type="radio" name="q9" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>10. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q10" value="0"> Siempre
-                <input type="radio" name="q10" value="1"> Casi siempre
-                <input type="radio" name="q10" value="2"> Algunas veces
-                <input type="radio" name="q10" value="3"> Casi nunca
-                <input type="radio" name="q10" value="4"> Nunca
-            </div>
-            
-            <div class="question">
-                <label>11. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q11" value="0"> Siempre
-                <input type="radio" name="q11" value="1"> Casi siempre
-                <input type="radio" name="q11" value="2"> Algunas veces
-                <input type="radio" name="q11" value="3"> Casi nunca
-                <input type="radio" name="q11" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>12. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q12" value="0"> Siempre
-                <input type="radio" name="q12" value="1"> Casi siempre
-                <input type="radio" name="q12" value="2"> Algunas veces
-                <input type="radio" name="q12" value="3"> Casi nunca
-                <input type="radio" name="q12" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>13. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q13" value="0"> Siempre
-                <input type="radio" name="q13" value="1"> Casi siempre
-                <input type="radio" name="q13" value="2"> Algunas veces
-                <input type="radio" name="q13" value="3"> Casi nunca
-                <input type="radio" name="q13" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>14. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q14" value="0"> Siempre
-                <input type="radio" name="q14" value="1"> Casi siempre
-                <input type="radio" name="q14" value="2"> Algunas veces
-                <input type="radio" name="q14" value="3"> Casi nunca
-                <input type="radio" name="q14" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>15. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q15" value="0"> Siempre
-                <input type="radio" name="q15" value="1"> Casi siempre
-                <input type="radio" name="q15" value="2"> Algunas veces
-                <input type="radio" name="q15" value="3"> Casi nunca
-                <input type="radio" name="q15" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>16. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q16" value="0"> Siempre
-                <input type="radio" name="q16" value="1"> Casi siempre
-                <input type="radio" name="q16" value="2"> Algunas veces
-                <input type="radio" name="q16" value="3"> Casi nunca
-                <input type="radio" name="q16" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>17. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q17" value="0"> Siempre
-                <input type="radio" name="q17" value="1"> Casi siempre
-                <input type="radio" name="q17" value="2"> Algunas veces
-                <input type="radio" name="q17" value="3"> Casi nunca
-                <input type="radio" name="q17" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>18. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q18" value="0"> Siempre
-                <input type="radio" name="q18" value="1"> Casi siempre
-                <input type="radio" name="q18" value="2"> Algunas veces
-                <input type="radio" name="q18" value="3"> Casi nunca
-                <input type="radio" name="q18" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>19. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q19" value="0"> Siempre
-                <input type="radio" name="q19" value="1"> Casi siempre
-                <input type="radio" name="q19" value="2"> Algunas veces
-                <input type="radio" name="q19" value="3"> Casi nunca
-                <input type="radio" name="q19" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>20. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q20" value="0"> Siempre
-                <input type="radio" name="q20" value="1"> Casi siempre
-                <input type="radio" name="q20" value="2"> Algunas veces
-                <input type="radio" name="q20" value="3"> Casi nunca
-                <input type="radio" name="q20" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>21. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q21" value="0"> Siempre
-                <input type="radio" name="q21" value="1"> Casi siempre
-                <input type="radio" name="q21" value="2"> Algunas veces
-                <input type="radio" name="q21" value="3"> Casi nunca
-                <input type="radio" name="q21" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>22. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q22" value="0"> Siempre
-                <input type="radio" name="q22" value="1"> Casi siempre
-                <input type="radio" name="q22" value="2"> Algunas veces
-                <input type="radio" name="q22" value="3"> Casi nunca
-                <input type="radio" name="q22" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>23. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q23" value="0"> Siempre
-                <input type="radio" name="q23" value="1"> Casi siempre
-                <input type="radio" name="q23" value="2"> Algunas veces
-                <input type="radio" name="q23" value="3"> Casi nunca
-                <input type="radio" name="q23" value="4"> Nunca
-            </div>
-            
-            <div class="question">
-                <label>24. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q24" value="0"> Siempre
-                <input type="radio" name="q24" value="1"> Casi siempre
-                <input type="radio" name="q24" value="2"> Algunas veces
-                <input type="radio" name="q24" value="3"> Casi nunca
-                <input type="radio" name="q24" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>25. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q25" value="0"> Siempre
-                <input type="radio" name="q25" value="1"> Casi siempre
-                <input type="radio" name="q25" value="2"> Algunas veces
-                <input type="radio" name="q25" value="3"> Casi nunca
-                <input type="radio" name="q25" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>26. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q26" value="0"> Siempre
-                <input type="radio" name="q26" value="1"> Casi siempre
-                <input type="radio" name="q26" value="2"> Algunas veces
-                <input type="radio" name="q26" value="3"> Casi nunca
-                <input type="radio" name="q26" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>27. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q27" value="0"> Siempre
-                <input type="radio" name="q27" value="1"> Casi siempre
-                <input type="radio" name="q27" value="2"> Algunas veces
-                <input type="radio" name="q27" value="3"> Casi nunca
-                <input type="radio" name="q27" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>28. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q28" value="0"> Siempre
-                <input type="radio" name="q28" value="1"> Casi siempre
-                <input type="radio" name="q28" value="2"> Algunas veces
-                <input type="radio" name="q28" value="3"> Casi nunca
-                <input type="radio" name="q28" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>29. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q29" value="0"> Siempre
-                <input type="radio" name="q29" value="1"> Casi siempre
-                <input type="radio" name="q29" value="2"> Algunas veces
-                <input type="radio" name="q29" value="3"> Casi nunca
-                <input type="radio" name="q29" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>30. </label><br>
-                <input type="radio" name="q30" value="0"> Siempre
-                <input type="radio" name="q30" value="1"> Casi siempre
-                <input type="radio" name="q30" value="2"> Algunas veces
-                <input type="radio" name="q30" value="3"> Casi nunca
-                <input type="radio" name="q30" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>31. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q31" value="0"> Siempre
-                <input type="radio" name="q31" value="1"> Casi siempre
-                <input type="radio" name="q31" value="2"> Algunas veces
-                <input type="radio" name="q31" value="3"> Casi nunca
-                <input type="radio" name="q31" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>32. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q32" value="0"> Siempre
-                <input type="radio" name="q32" value="1"> Casi siemp31
-                <input type="radio" name="q32" value="2"> Algunas veces
-                <input type="radio" name="q32" value="3"> Casi nunca
-                <input type="radio" name="q32" value="4"> Nunca
-            </div>
-
-            <div class="question">
-                <label>33. Me preocupa sufrir un accidente en mi trabajo</label><br>
-                <input type="radio" name="q33" value="0"> Siempre
-                <input type="radio" name="q33" value="1"> Casi siempre
-                <input type="radio" name="q33" value="2"> Algunas veces
-                <input type="radio" name="q33" value="3"> Casi nunca
-                <input type="radio" name="q33" value="4"> Nunca
-            </div>
-
-
-
         </form>
 
     </div>

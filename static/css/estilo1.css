@@ -4,6 +4,7 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    background: #8c8c8c;
     margin:0;
     padding: 0;
     height: 100%;
@@ -25,6 +26,7 @@ body{
     height: 100%;
     margin-top: 20px;
     padding: 10px 10px;
+    border-radius: 10px;
 }
 .question{
     background: #535b61;
@@ -41,3 +43,20 @@ body{
     margin-top: 10px;
     margin-left:30px;
 }
+.seccion{
+    padding:10px;
+    margin: 10px 0;
+    font-size: 30px;
+    font-family: Edu NSW ACT Foundation;
+    background: #75aba3;
+    color:#111010;
+    text-align: justify;
+    border-radius: 10px;
+    border:solid 1px;
+
+}
+
+.navbar-brand{
+    font-size: 50px;
+}
+
