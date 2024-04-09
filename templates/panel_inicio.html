@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style1.css">
+
+    <title>Panel principal</title>
+</head>
+
+<body>
+    <h1 style="font-size: 30px;
+                    font-family: sans-serif;">
+    </h1>
+    <div class="gradient-background"></div>
+
+    <div class="container mt-sm">
+        <div class="float-right">
+        </div>
+
+        <div class="jumbotron text-center mb-5">
+            <h2 class="display-4">¡Bienvenido, {{ datos_usuario.nombre }}!</h2>
+            <h2 style="font-size: 50px;">{{ datos_usuario.apellido_paterno }} {{ datos_usuario.apellido_materno }}</h2>
+            <h2 class="lead">ID :{{ datos_usuario.id }}</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4 shadow">
+                    <div class="card-body">
+                        <h5 class="card-title">Cuestionario número 1</h5>
+                        <p class="card-text">Cuestionario de identificación a trabajadores sujetos a acontecimientos
+                            tramáuticos severos.</p>
+                        <a href="" class="btn btn-dark"><i class="fas fa-question"></i> Ir</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow">
+                    <div class="card-body">
+                        <h5 class="card-title">Cuestionario número 2</h5>
+                        <p class="card-text">Cuestionario para identificar los factores de riesgo psicosocial en los
+                            centros de trabajo.</p>
+                        <a href="" class="btn btn-dark"><i class="fas fa-question"></i> Ir</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mb-4 shadow">
+                    <div class="card-body">
+                        <h5 class="card-title">Cuestionario número 3</h5>
+                        <p class="card-text">Cuestionario para la identificación de factores de riesgo Psicosocial y
+                            evaluacion del entorno organizacional</p>
+                        <a href="{{url_for('cuestionarioTres')}}" class="btn btn-dark"><i class="fas fa-question""></i> Ir</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class=" footer">
+            <p>Todos los derechos reservados &copy; 2024</p>
+        </div>
+
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+    </div>
+</body>
+
+</html>

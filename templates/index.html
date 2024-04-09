@@ -1,39 +1,37 @@
-{% extends 'base.html' %}
-{% block styles %} 
-<link rel="stylesheet" href="static/css/stylesheet.css">
-<style>
-  body {
-        background-image: url("static/css/images/v1016-b-09.jpg");
-    }
-    .input-icon {
-        position: relative;
-    }
-    .input-icon i {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 10px;
-    }
-</style>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
-{% endblock %}
+<!DOCTYPE html>
+<html lang="es">
 
-{% block titulo %} Login {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/stylesheet.css">
+    <link rel="stylesheet" href="/static/css/stylesheet.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia&effect=neon|outline|emboss|shadow-multiple">
+    <style>
+        .body{
+            background: url(/static/css/images/v1016-b-09.jpg);
+        }
+    </style>
+    <title>Login</title>
+</head>
 
-{% block content %}
-<h1>Iniciar sesión</h1>
-<form action="validacion_login" method="POST">
-    <div class="input-icon">
-        <label class="font-effect-neon" for="email"><i class="fa fa-user"></i> Usuario</label><br>
-        <input  class= "etiqueta_uno" id="email" type="email" name="email" required>
-    </div><br>
-    <div class="input-icon">
-        <label class="font-effect-neon" for="contrasena"><i class="fa fa-lock"></i> Password:</label><br>
-        <input class="etiqueta_dos" id="contrasena" type="password" name="contrasena">
-    </div><br><br>
-    <button id="boton_inicio" type="submit">Iniciar sesión</button>
-</form>
+<body >
+    <h1>Iniciar sesión</h1>
+    <form id="loginForm" action="/login" method="POST">
+        <div class="input-icon">
+            <label class="font-effect-neon" for="email"><i class="fa fa-user"></i> Usuario</label><br>
+            <input class="etiqueta_uno" id="email" type="email" name="email" required>
+        </div><br>
+        <div class="input-icon">
+            <label class="font-effect-neon" for="contrasena"><i class="fa fa-lock"></i> Password:</label><br>
+            <input class="etiqueta_dos" id="contrasena" type="password" name="contrasena">
+        </div><br><br>
+        <button id="boton_inicio" type="submit">Iniciar sesión</button>
+    </form>
 
-<p>¿No tienes cuenta? <a href="registro.html">Registrarse aquí</a></p>
-{% endblock %}
+    <p>¿No tienes cuenta? <a href="registro.html">Registrarse aquí</a></p>
 
+   
+</body>
+
+</html>

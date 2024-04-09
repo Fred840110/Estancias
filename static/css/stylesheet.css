@@ -6,7 +6,9 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background: url(/static/css/images/v1016-b-09.jpg);
     height: 100vh;
+
     
 }
 
@@ -55,9 +57,9 @@ a {
 #marco_usuario {
     border-style: solid;
     border-color: blue;
-    border-radius: 5px;
+    border-radius: 2px;
     padding: 10px;
-    height: 10px;
+    height: 20px;
     width: 200px;
 }
 
@@ -92,13 +94,16 @@ a {
 }
 
 .etiqueta_uno{
-    width: 200px;
+    width: 300px;
+    height: 2em;
     font-size: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
+    justify-content: baseline;
 }
 
 .etiqueta_dos{
-    width: 200px;
+    width: 300px;
+    height: 2em;
     font-size: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
 }

@@ -65,12 +65,12 @@
         </div>
     </nav>
 
-    <div class="titulo">
+    <div class="titulo-sm">
         <h1>Cuestionario Seguridad en el trabajo</h1>
     </div>
-    <div class="cuestionario">
+    <div class="cuestionario-sm">
         
-        <form action="/procesar respuesta" id="quizform" method="POST">
+        <form action="/analisis" id="quizform" method="POST">
 
             <div class="cuestionario_seccion_a">
                 <p class="seccion">Para responder las siguientes preguntas considere las condiciones ambientales de su centro de trabajo</p>
@@ -701,6 +701,97 @@
                     <input type="radio" name="q64" value="1" required> Casi nunca
                     <input type="radio" name="q64" value="0" required> Nunca
                 </div>
+
+            <div class="cuestionario_seccion_p">
+                <p class="seccion">
+                    Las preguntas siguientes están relacionadas con las actitudes de las personas que supervisa.
+                </p>
+
+                <!-- 65 -->
+                <div class="question">
+                    <label>65. Atiendo a clientes o usuarios muy enojados </label><br>
+                    <input type="radio" name="q65" value="4" required> Siempre
+                    <input type="radio" name="q65" value="3" required> Casi siempre
+                    <input type="radio" name="q65" value="2" required> Algunas veces
+                    <input type="radio" name="q65" value="1" required> Casi nunca
+                    <input type="radio" name="q65" value="0" required> Nunca
+                </div>
+
+                <!-- 66 -->
+                <div class="question">
+                    <label>66. Mi trabajo me exige atender personas muy necesitadas de ayuda o enfermas </label><br>
+                    <input type="radio" name="q66" value="4" required> Siempre
+                    <input type="radio" name="q66" value="3" required> Casi siempre
+                    <input type="radio" name="q66" value="2" required> Algunas veces
+                    <input type="radio" name="q66" value="1" required> Casi nunca
+                    <input type="radio" name="q66" value="0" required> Nunca
+                </div>
+
+                <!-- 67 -->
+                <div class="question">
+                    <label>67. Para hacer mi trabajo debo demostrar sentimientos distios a los míos </label><br>
+                    <input type="radio" name="q67" value="4" required> Siempre
+                    <input type="radio" name="q67" value="3" required> Casi siempre
+                    <input type="radio" name="q67" value="2" required> Algunas veces
+                    <input type="radio" name="q67" value="1" required> Casi nunca
+                    <input type="radio" name="q67" value="0" required> Nunca
+                </div>
+                
+                <!-- 68 -->
+                <div class="question">
+                    <label>68. Mi trabajo me exige atender situacion de violencia </label><br>
+                    <input type="radio" name="q68" value="4" required> Siempre
+                    <input type="radio" name="q68" value="3" required> Casi siempre
+                    <input type="radio" name="q68" value="2" required> Algunas veces
+                    <input type="radio" name="q68" value="1" required> Casi nunca
+                    <input type="radio" name="q68" value="0" required> Nunca
+                </div>
+
+            <div class="cuestionario_seccion_p">
+                <p class="seccion">
+                    Las preguntas siguientes están relacionadas con lactitudes de las personas que supervisa.
+                </p>
+
+                <!-- 69 -->
+                <div class="question">
+                    <label>69. Comunican tarde los asuntos de trabajo </label><br>
+                    <input type="radio" name="q69" value="4" required> Siempre
+                    <input type="radio" name="q69" value="3" required> Casi siempre
+                    <input type="radio" name="q69" value="2" required> Algunas veces
+                    <input type="radio" name="q69" value="1" required> Casi nunca
+                    <input type="radio" name="q69" value="0" required> Nunca
+                </div>
+                
+                <!-- 70 -->
+                <div class="question">
+                    <label>70. Dificultan el logro de los resultados del trabajo </label><br>
+                    <input type="radio" name="q70" value="4" required> Siempre
+                    <input type="radio" name="q70" value="3" required> Casi siempre
+                    <input type="radio" name="q70" value="2" required> Algunas veces
+                    <input type="radio" name="q70" value="1" required> Casi nunca
+                    <input type="radio" name="q70" value="0" required> Nunca
+                </div>
+
+                <!-- 71 -->
+                <div class="question">
+                    <label>71. Cooperan poco cuando se necesita </label><br>
+                    <input type="radio" name="q71" value="4" required> Siempre
+                    <input type="radio" name="q71" value="3" required> Casi siempre
+                    <input type="radio" name="q71" value="2" required> Algunas veces
+                    <input type="radio" name="q71" value="1" required> Casi nunca
+                    <input type="radio" name="q71" value="0" required> Nunca
+                </div>
+
+                <!-- 72 -->
+                <div class="question">
+                    <label>72. Informan las sugerencias para mejorar su trabajo </label><br>
+                    <input type="radio" name="q72" value="4" required> Siempre
+                    <input type="radio" name="q72" value="3" required> Casi siempre
+                    <input type="radio" name="q72" value="2" required> Algunas veces
+                    <input type="radio" name="q72" value="1" required> Casi nunca
+                    <input type="radio" name="q72" value="0" required> Nunca
+                </div>
+
 
                 <!--Hacemos el boton de envio del formulario-->
                 <input class="boton" type="submit" value="Enviar respuestas">
