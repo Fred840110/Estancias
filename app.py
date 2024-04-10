@@ -68,6 +68,7 @@ def registro():
 @app.route('/enviar_correo', methods=['POST'])
 def enviar_correo():
     if request.method == 'POST':
+        # Obtener datos del formulario
         nombre = request.form['nombre']
         ap_paterno = request.form['apellido_paterno']
         ap_materno = request.form['apellido_materno']
@@ -83,40 +84,39 @@ def enviar_correo():
 
         try:
             mes_numerico = obtnener_mes_numerico(mes)
-
             fecha_nacimiento = datetime(int(anio), mes_numerico, int(dia_nac))
         except ValueError as e:
-            # Manejar el error aquí si es necesario
+            flash('Por favor, introduce una fecha de nacimiento válida', 'danger')
+            return redirect(url_for('registro'))
+
+        # Verificar si el correo electrónico ya está registrado
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * FROM usuario WHERE email = %s", (email,))
+        existing_user = cur.fetchone()
+        cur.close()
+
+        if existing_user:
+            flash('Este correo electrónico ya está registrado. Por favor, inicia sesión o utiliza otro correo electrónico.', 'danger')
             return redirect(url_for('registro'))
 
         # Verificar si las contraseñas coinciden
         if contrasena != conf_contrasena:
-            flash('Las contraseñas no coinciden, Por favor, inténtalo de nuevo', 'warning')
+            flash('Las contraseñas no coinciden. Por favor, inténtalo de nuevo.', 'danger')
             return redirect(url_for('registro'))
 
         # Encriptar la contraseña antes de almacenarla en la base de datos
         password_encriptado = bcrypt.hashpw(contrasena.encode('utf-8'), bcrypt.gensalt())
+
+        # Insertar usuario en la base de datos
         cur = mysql.connection.cursor()
         cur.execute("INSERT INTO usuario(nombre, email, telefono, direccion, ap_paterno, ap_materno, contrasena, ocupacion, fecha_nac, rol) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
                     (nombre, email, tel, direccion, ap_paterno, ap_materno, password_encriptado, ocupacion, fecha_nacimiento, 'usuario'))
         mysql.connection.commit()
         cur.close()
 
-        # Generar un número de confirmación para los datos para enviar por correo
-        numero_de_confirmacion = ''.join(random.choices('0123456789', k=6))
-
-        # Almacenar el número de confirmación en la sesión
-        session['numero_de_confirmacion'] = numero_de_confirmacion
-
-        # Construir el mensaje de correo electrónico
-        msj = Message('CONFIRMACION DE REGISTRO', sender='fred.urbina1984@gamil.com', recipients=[email])
-        msj.body = f'Hola, por favor haz click en el siguiente para confirmar tu registro: {url_for("confirmar_registro", numero_confirmacion=numero_de_confirmacion, _external=True)}'
-        print(password)
-        mail.send(msj)
-
-        flash('Se ha enviado un correo de confirmación. Por favor, revisa tu bandeja de entrada.', 'success')
+        flash('Registro exitoso. Por favor, inicia sesión.', 'success')
         return redirect(url_for('index'))
-
+    
 @app.route('/login', methods=['POST'])
 def login():
     if request.method == 'POST':
